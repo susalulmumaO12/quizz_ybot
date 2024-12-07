@@ -1,0 +1,17 @@
+name: Deploy pythonanywhere
+on: [push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Re-Deploy Pythonanywhere
+        uses: susalulmumaO12/pythonanywhere-deploy-action@v1.0.0
+        with:
+          host: 'www.pythonanywhere.com' or 'www.eu.pythonanywhere.com'
+          username: {{ secrets.USERNAME }}
+          api_token: {{ secrets.APITOKEN }}
+          console_id:  {{ secrets.CONSOLE_ID }}
+          directory: {{ secrets.DIRECTORY }}
