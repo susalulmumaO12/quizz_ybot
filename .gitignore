@@ -4,3 +4,4 @@ lib64
 share/
 src/.env
 /.venv
+/src/__pycache__
