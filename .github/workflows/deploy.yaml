@@ -1,0 +1,19 @@
+name: Deploy pythonanywhere webapp
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Re-Deploy Pythonanywhere Django API
+        uses: umuttopalak/pythonanywhere-deploy-action@v1.1.0
+        with:
+          host: "www.pythonanywhere.com"
+          username: ${{ secrets.USERNAME }}
+          api_token: ${{ secrets.APITOKEN }}
+          domain_name: ${{ secrets.DOMAIN_NAME }}
