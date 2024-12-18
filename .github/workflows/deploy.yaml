@@ -34,5 +34,5 @@ jobs:
           curl -X POST \
             -H "Authorization: Token $PA_API_TOKEN" \
             -H "Content-Type: application/json" \
-            -d '{"input": "cd quizz_ybot pip install -r ./src/requirements.txt \npython ./src/main.py \n"}' \
+            -d '{"input": "cd quizz_ybot && pip install -r ./src/requirements.txt \npython ./src/main.py \n"}' \
             https://www.pythonanywhere.com/api/v0/user/$PA_USERNAME/consoles/$PA_CONSOLE_ID/send_input/
