@@ -1,19 +1,38 @@
-name: Deploy pythonanywhere webapp
+name: Deploying to Pythonanywhere
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Re-Deploy Pythonanywhere Django API
-        uses: umuttopalak/pythonanywhere-deploy-action@v1.1.0
-        with:
-          host: "www.pythonanywhere.com"
-          username: ${{ secrets.USERNAME }}
-          api_token: ${{ secrets.APITOKEN }}
-          domain_name: ${{ secrets.DOMAIN_NAME }}
+      - name: Stop Current Running Process
+        env:
+          PA_API_TOKEN: ${{ secrets.APITOKEN }}
+          PA_USERNAME: ${{ secrets.USERNAME }}
+          PA_CONSOLE_ID: ${{ secrets.CONSOLE_ID }}
+        run: |
+          curl -X POST \
+            -H "Authorization: Token $PA_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"input": "\u0003"}' \
+            https://www.pythonanywhere.com/api/v0/user/$PA_USERNAME/consoles/$PA_CONSOLE_ID/send_input/
+
+      - name: Deploy
+        env:
+          PA_API_TOKEN: ${{ secrets.APITOKEN }}
+          PA_USERNAME: ${{ secrets.USERNAME }}
+          PA_CONSOLE_ID: ${{ secrets.CONSOLE_ID }}
+        run: |
+          curl -X POST \
+            -H "Authorization: Token $PA_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d '{"input": "cd quizz_ybot pip install -r ./src/requirements.txt \npython ./src/main.py \n"}' \
+            https://www.pythonanywhere.com/api/v0/user/$PA_USERNAME/consoles/$PA_CONSOLE_ID/send_input/
