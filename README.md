@@ -68,6 +68,8 @@ Format your message as follows:
 
 ## Feedback
 
-Nothing is ever perfect and suitable for everyone! Please send me your feedback through email.
+Nothing is ever perfect and suitable for everyone! 
 
-<a href="fawal.salma@gmail.com" target="_blank"><img src="https://img.shields.io/badge/-fawal.salma-0077B5?style=for-the-badge&logo=Gmail&color=F3FDF3"/></a>
+Please send me your feedback through email, or consider opening a new issue:
+
+<a href="fawal.salma@gmail.com" target="_blank"><img src="https://img.shields.io/badge/-fawal.salma-0077B5?style=for-the-badge&logo=Gmail&color=F3FDF3"/></a> <img width="10" /> <a href="github.com/susalulmumaO12/quizz_ybot/issues/new/choose" target="_blank"><img src="https://img.shields.io/badge/-New_issue-FFFFFF?style=flat-square&logo=Github&color=03b1fc&logoSize=auto"/></a>
