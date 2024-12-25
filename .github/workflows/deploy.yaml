@@ -1,6 +1,8 @@
 name: Deploying to Pythonanywhere
 
 on:
+  schedule:
+    - cron: "0 0 * * *"
   push:
     branches:
       - main
